@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    
+    <h1>Crie seu cadastro</h1>
+    Email para login: <input type="text" id="input_user_email">
+    Senha para login: <input type="password" id="input_user_password">
+    <button id="button_signup">Entrar</button>
+
+    <script>
+        document.getElementById("button_signup").addEventListener("click", signUp);
+
+        function signUp() {
+            const email = document.getElementById("input_user_email").value;
+            const password = document.getElementById("input_user_password").value;
+
+            // Verify if one of the fields are blank
+            if (email !== '' && password !== '') {
+                
+            } else {
+                window.alert("Um ou mais campos não foram preenchidos");
+            }
+        }
+    </script>
+
+</body>
+</html>
