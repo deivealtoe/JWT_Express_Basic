@@ -12,7 +12,7 @@ let users = [];
 
 
 // Get all users
-router.get('/', (request, response) => {
+router.get('/all', (request, response) => {
 
     // Verify if there are registered users
     if (users.length > 0) {
@@ -23,19 +23,14 @@ router.get('/', (request, response) => {
 });
 
 
-// Get only one user by his ID
-router.get('/:id', authMiddleware, (request, response) => {
-
-    // Verify if ID passed at get params equals the ID passed to middleware
-    if (testParamsIdToMiddlewareId(request.params.id, request.userId)) {
-        return response.status(400).json({ msg: "Param ID doesn't equals Token ID" });
-    }
+// Get only one user by his ID caontained in the token
+router.get('/', authMiddleware, (request, response) => {
 
     // Verify if user exists
-    if (users.some(user => user.id === request.params.id)) {
+    if (users.some(user => user.id === request.userId)) {
         
         // Get's user information if found
-        const user = users.find(user => user.id === request.params.id);
+        const user = users.find(user => user.id === request.userId);
 
         return response.status(200).json({ msg: "User found", user });
     }
@@ -76,25 +71,20 @@ router.post('/', (request, response) => {
 
 
 // Updating email of user
-router.put('/email/:id', authMiddleware, (request, response) => {
-
-    // Verify if ID passed at put params equals the ID passed to middleware
-    if (testParamsIdToMiddlewareId(request.params.id, request.userId)) {
-        return response.status(400).json({ msg: "Param ID doesn't equals Token ID" });
-    }
+router.put('/email', authMiddleware, (request, response) => {
 
     // Verify if email is present in request body
     if (request.body.email) {
 
-        // Verify if user exists
-        if (users.some(user => user.id === request.params.id)) {
+        // Verify if user exists with the token user id
+        if (users.some(user => user.id === request.userId)) {
 
             // Verify if new email is not already in use
             if (!users.some(user => user.email === request.body.email)) {
 
                 // Changing email of user
                 users.forEach(user => {
-                    if (user.id === request.params.id) {
+                    if (user.id === request.userId) {
                         user.email = request.body.email;
                     }
                 });
@@ -113,22 +103,17 @@ router.put('/email/:id', authMiddleware, (request, response) => {
 
 
 // Updating user password
-router.put('/password/:id', authMiddleware, (request, response) => {
-
-    // Verify if ID passed at put params equals the ID passed to middleware
-    if (testParamsIdToMiddlewareId(request.params.id, request.userId)) {
-        return response.status(400).json({ msg: "Param ID doesn't equals Token ID" });
-    }
+router.put('/password', authMiddleware, (request, response) => {
 
     // Verify if new password is present in body request
     if (request.body.password) {
 
         // Verify if user exists
-        if (users.some(user => user.id === request.params.id)) {
+        if (users.some(user => user.id === request.userId)) {
 
             // Changing user password
             users.forEach(user => {
-                if (user.id === request.params.id) {
+                if (user.id === request.userId) {
                     user.password = request.body.password;
                 }
             });
@@ -144,20 +129,15 @@ router.put('/password/:id', authMiddleware, (request, response) => {
 
 
 // Deleting an user
-router.delete('/:id', authMiddleware, (request, response) => {
-
-    // Verify if ID passed at delete params equals the ID passed to middleware
-    if (testParamsIdToMiddlewareId(request.params.id, request.userId)) {
-        return response.status(400).json({ msg: "Param ID doesn't equals Token ID" });
-    }
+router.delete('/', authMiddleware, (request, response) => {
 
     // Verify if user exists
-    if (!(users.some(user => user.id === request.params.id))) {
+    if (!(users.some(user => user.id === request.userId))) {
         return response.status(404).json({ msg: "User not found" });
     }
 
     // Deleting user
-    users = users.filter(user => user.id !== request.params.id);
+    users = users.filter(user => user.id !== request.userId);
     
     return response.status(200).json({ msg: "User deleted successfully" });
 });
@@ -187,12 +167,6 @@ router.post('/authenticate', (request, response) => {
 
     return response.status(404).json({ msg: "User not found" });
 });
-
-
-// Function to verify request params.id to middleware userId
-function testParamsIdToMiddlewareId(paramsId, middlewareId) {
-    return paramsId !== middlewareId;
-}
 
 
 module.exports = router;
