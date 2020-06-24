@@ -23,7 +23,7 @@ router.get('/all', (request, response) => {
 });
 
 
-// Get only one user by his ID caontained in the token
+// Get only one user by his ID contained in the token
 router.get('/', authMiddleware, (request, response) => {
 
     // Verify if user exists
