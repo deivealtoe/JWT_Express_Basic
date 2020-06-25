@@ -8,7 +8,11 @@ header {
 }
 
 form {
-  min-width: 400px;
+  min-width: 200px;
   max-width: 600px;
   margin: 0 auto;
+}
+
+h2.form {
+  text-align: center;
 }

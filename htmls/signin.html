@@ -9,35 +9,43 @@
     <!-- Yeah I'm using bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Home</title>
+    <title>Sign In</title>
 </head>
 <body>
     
     <header>
         <nav>
             <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" href="./index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./signup.html">Sign Up</a>
-                </li>
-                <li>
-                  <a class="nav-link" href="./signin.html">Sign In</a>
-                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">Home</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="./signup.html">Sign Up</a>
+              </li>
+
+              <li>
+                <a class="nav-link active" href="./signin.html">Sign In</a>
+              </li>
             </ul>
         </nav>
     </header>
 
 
     <div class="container">
-        <h1>JWT_Express_Basic</h1>
+        <h2 class="form">Ready to sign in</h2>
 
-        <p><strong><i>This is just a basic repository to store the initial studies I've been doing about express and JsonWebToken authentication</i></strong></p>
+        <form>
+          <div class="form-group">
+            <input type="email" class="form-control" id="input_email" placeholder="Email">
+          </div>
 
-        <h2>What is in it</h2>
+          <div class="form-group">
+            <input type="password" class="form-control" id="input_password" placeholder="Password">
+          </div>
 
-        <p>This API is made with Express and my <strong><i>database</i></strong> is just an array of the object <strong><i>users</i></strong> that contains an <strong><i>email</i></strong> and a <strong><i>password</i></strong>. So every time that the API restarts it loses the data...</p>
+          <button type="button" class="btn btn-primary" id="btn_login">Sign In</button>
+        </form>
     </div>
 
 

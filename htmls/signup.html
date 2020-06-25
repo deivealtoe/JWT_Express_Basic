@@ -22,32 +22,37 @@
                 <li class="nav-item">
                   <a class="nav-link active" href="./signup.html">Sign Up</a>
                 </li>
+                <li>
+                  <a class="nav-link" href="./signin.html">Sign In</a>
+                </li>
             </ul>
         </nav>
     </header>
 
+    <div class="container">
+        <h2 class="form">Ready to registrate</h2>
 
-    <form>
-        <div class="form-group">
-            <label for="input_email">Your email address</label>
-            <input type="email" class="form-control" id="input_email" aria-describedat="emailHelp" required>
-            <small id="emailHelp" class="form-text text-muted">You can enter any email format and it will work... xD</small>
-        </div>
+        <form>
+            <div class="form-group">
+                <label for="input_email">Your email address</label>
+                <input type="email" class="form-control" id="input_email" aria-describedat="emailHelp" required>
+                <small id="emailHelp" class="form-text text-muted">You can enter any email format and it will work... xD</small>
+            </div>
+            <div class="form-group">
+                <label for="input_password_one">Please enter a password</label>
+                <input type="password" class="form-control" id="input_password_one" required>
+                <small id="passwordOne" class="form-text text-muted">And yes, password without restrictions...</small>
+            </div>
+            <div class="form-group">
+                <label for="input_password_two">Repeat password</label>
+                <input type="password" class="form-control" id="input_password_two" required>
+                <small id="passwordTwo" class="form-text text-muted">Be careful with weak passwords...</small>
+            </div>
 
-        <div class="form-group">
-            <label for="input_password_one">Please enter a password</label>
-            <input type="password" class="form-control" id="input_password_one" required>
-            <small id="passwordOne" class="form-text text-muted">And yes, password without restrictions...</small>
-        </div>
+            <button type="button" class="btn btn-primary" id="btn_done">Complete</button>
+        </form>
 
-        <div class="form-group">
-            <label for="input_password_two">Repeat password</label>
-            <input type="password" class="form-control" id="input_password_two" required>
-            <small id="passwordTwo" class="form-text text-muted">Be careful with weak passwords...</small>
-        </div>
-
-        <button type="button" class="btn btn-primary" id="btn_done">Done</button>
-    </form>
+    </div>
     
 
     <!-- Yep, it really is bootstrap -->

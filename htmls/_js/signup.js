@@ -1,42 +1,38 @@
 document.querySelector("#btn_done").addEventListener('click', () => {
   
   const email = document.querySelector("#input_email").value;
-  const passwordOne = document.querySelector("#input_password_one").value;
-  const passwordTwo = document.querySelector("#input_password_two").value;
+  const password_one = document.querySelector("#input_password_one").value;
+  const password_two = document.querySelector("#input_password_two").value;
 
-  //window.alert(`${areFieldsBlank(emailInput, passwordOne, passwordTwo)}`);
-  //window.alert(`${passwordsAreEquals(passwordOne, passwordTwo)}`);
+  const verifiedFields = fieldsNotBlank(email, password_one, password_two);
+  const verifiedPasswords = passwordsCombine(password_one, password_two);
 
-  if (fieldsNotBlank(email, passwordOne, passwordTwo) && passwordsCombine(passwordOne, passwordTwo)) {
-    
-    if (makingPost(email, passwordOne)) {
-      window.location.href = './index.html';
-    }
-    
+  if (verifiedFields && verifiedPasswords) {
+    makingPost(email, password_one);
+
+    window.location.href = "./index.html";
   } else {
-
-    console.log("There are some blank field in this form or passwords doesn't match");
-
+    window.alert("There are some blank field in this form or passwords doesn't match");
   }
 
 });
 
 
-function fieldsNotBlank(email, pass1, pass2) {
+function fieldsNotBlank(email, password_one, password_two) {
 
-  return email !== '' && pass1 !== '' && pass2 !== '';
-
-}
-
-
-function passwordsCombine(pass1, pass2) {
-
-  return pass1 === pass2;
+  return email !== '' && password_one !== '' && password_two !== '';
 
 }
 
 
-async function makingPost(email, password) {
+function passwordsCombine(password_one, password_two) {
+
+  return password_one === password_two;
+
+}
+
+
+async function makingPost(email, password_one) {
 
   const response = await fetch("http://127.0.0.1:3000/api/users", {
     method: "post",
@@ -45,15 +41,9 @@ async function makingPost(email, password) {
     },
     body: JSON.stringify({
       "email": email,
-      "password": password,
+      "password": password_one,
     }),
   });
-
-  console.log(`Status code: ${response.status} - Ok: ${response.ok}`);
-
-  const jsonData = await response.json();
-
-  console.log(jsonData.msg);
 
   return response.ok;
 
