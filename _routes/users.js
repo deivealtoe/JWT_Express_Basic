@@ -32,7 +32,7 @@ router.get('/', authMiddleware, (request, response) => {
         // Get's user information if found
         const user = users.find(user => user.id === request.userId);
 
-        return response.status(200).json({ msg: "User found", user });
+        return response.status(200).json({ msg: "User found", user: { id: user.id, email: user.email } });
     }
 
     return response.status(404).json({ msg: "User not found" });

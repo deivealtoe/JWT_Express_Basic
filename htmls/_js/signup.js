@@ -8,11 +8,13 @@ document.querySelector("#btn_done").addEventListener('click', () => {
   const verifiedPasswords = passwordsCombine(password_one, password_two);
 
   if (verifiedFields && verifiedPasswords) {
-    makingPost(email, password_one);
 
-    window.location.href = "./index.html";
+    registerUser(email, password_one);
+
   } else {
+
     window.alert("There are some blank field in this form or passwords doesn't match");
+
   }
 
 });
@@ -32,7 +34,7 @@ function passwordsCombine(password_one, password_two) {
 }
 
 
-async function makingPost(email, password_one) {
+async function registerUser(email, password_one) {
 
   const response = await fetch("http://127.0.0.1:3000/api/users", {
     method: "post",
@@ -45,6 +47,28 @@ async function makingPost(email, password_one) {
     }),
   });
 
-  return response.ok;
+  const responseStatus = response.status;
+
+  const responseJson = await response.json();
+  const responseMessage = responseJson.msg;
+
+  informResponse(responseStatus, responseMessage);
+
+}
+
+
+function informResponse(responseStatus, responseMessage) {
+
+  if (responseStatus === 201) {
+
+    window.alert(responseMessage);
+
+    window.location.href = "./index.html";
+
+  } else {
+
+    window.alert(responseMessage);
+
+  }
 
 }

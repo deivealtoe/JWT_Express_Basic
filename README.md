@@ -4,5 +4,5 @@
 
 <h2>What is in it</h2>
 
-<p>This API is made with Express and my <strong><i>database</i></strong> is just an array of the object <strong><i>users</i></strong> that contains an <strong><i>email</i></strong> and a <strong><i>password</i></strong>. So every time that the API restarts it loses the data...</p>
+<p>This API is made with Express and my <strong><i>database</i></strong> is just an array of the object <strong><i>users</i></strong> that contains an <strong><i>id</i></strong>, <strong><i>email</i></strong> and a <strong><i>password</i></strong>. So every time that the API restarts it loses the data...</p>
 
