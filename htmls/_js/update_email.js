@@ -20,8 +20,8 @@ async function updateEmail(email) {
   const response = await fetch('http://127.0.0.1:3000/api/users/email', {
     method: "put",
     headers: {
-      "Content-Type": "application/json",
       "Authorization": sessionStorage.getItem("token"),
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       "email": email,

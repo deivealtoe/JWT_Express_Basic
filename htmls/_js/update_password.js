@@ -41,7 +41,7 @@ function informResponse(responseStatus, responseMsg) {
 
   if (responseStatus === 200) {
 
-    window.location.href = './update_info.html';
+    window.location.href = "./update_info.html";
 
   }
 

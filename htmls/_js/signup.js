@@ -47,27 +47,20 @@ async function registerUser(email, password_one) {
     }),
   });
 
-  const responseStatus = response.status;
-
   const responseJson = await response.json();
-  const responseMessage = responseJson.msg;
 
-  informResponse(responseStatus, responseMessage);
+  informResponse(response.status, responseJson.msg);
 
 }
 
 
-function informResponse(responseStatus, responseMessage) {
+function informResponse(responseStatus, responseMsg) {
+
+  window.alert(responseMsg);
 
   if (responseStatus === 201) {
 
-    window.alert(responseMessage);
-
     window.location.href = "./index.html";
-
-  } else {
-
-    window.alert(responseMessage);
 
   }
 

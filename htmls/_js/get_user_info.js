@@ -14,10 +14,6 @@ async function getUserInfo() {
 
     setOldEmailOnLabel(responseJson.user.email);
 
-  } else {
-
-    setOldEmailOnLabel();
-
   }
 
 }
@@ -30,10 +26,6 @@ function setOldEmailOnLabel(email) {
   if (email) {
 
     labelEmail.textContent = 'Your old email is' + `: ${email}`;
-
-  } else {
-
-    labelEmail.textContent = "Not logged in";
 
   }
 
