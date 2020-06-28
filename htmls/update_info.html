@@ -40,12 +40,23 @@
 
     <form>
       <div class="form-group">
-        <label for="input_email">Your email address</label>
-        <input type="email" class="form-control" id="input_email" aria-describedat="emailHelp" required>
-        <small id="emailHelp" class="form-text text-muted">You can enter any email format and it will work... xD</small>
+        <label for="input_email" id="label_email"></label>
+        <input type="email" class="form-control" id="input_email" placeholder="Type here your new email" required>
       </div>
 
-      <button type="button" class="btn btn-primary" id="btn_done">Complete</button>
+      <button type="button" class="btn btn-primary" id="btn_update_email">Update email</button>
+    </form>
+
+    <br><hr><br>
+
+    <form>
+      <div class="form-group">
+        <label for="input_password">New password</label>
+        <input type="password" class="form-control" id="input_password" required>
+        <small class="form-text text-muted">Be careful with weak passwords...</small>
+      </div>
+
+      <button type="button" class="btn btn-primary" id="btn_update_password">Update password</button>
     </form>
 
   </div>
@@ -56,11 +67,13 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-  <script src="./_js/signup.js"></script>
-
   <script src="./_js/signout.js"></script>
 
   <script src="./_js/get_user_info.js"></script>
+
+  <script src="./_js/update_email.js"></script>
+
+  <script src="./_js/update_password.js"></script>
   
 </body>
 </html>

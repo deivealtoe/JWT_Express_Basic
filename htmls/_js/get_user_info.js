@@ -8,12 +8,36 @@ async function getUserInfo() {
     },
   });
 
-  console.log(response);
-
   const responseJson = await response.json();
 
-  console.log(responseJson);
+  if (response.status === 200) {
+
+    setOldEmailOnLabel(responseJson.user.email);
+
+  } else {
+
+    setOldEmailOnLabel();
+
+  }
 
 }
+
+
+function setOldEmailOnLabel(email) {
+
+  const labelEmail = document.querySelector("#label_email");
+
+  if (email) {
+
+    labelEmail.textContent = 'Your old email is' + `: ${email}`;
+
+  } else {
+
+    labelEmail.textContent = "Not logged in";
+
+  }
+
+}
+
 
 getUserInfo();
